@@ -6,6 +6,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import passport from 'passport';
 import session from 'express-session';
+import index from './routes/index';
 
 const app = express();
 
@@ -27,9 +28,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use('/api', (req, res, next) => {
-    res.status(200).json({ message: 'Hasdadasdsadi' })
-})
+app.use('/api', index)
 
 const server = http.createServer(app);
 
